@@ -1,10 +1,24 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import './Signup.css'
 
 const Signup = () => {
-    const registerClick = () =>{
-        alert('Register Successfully')
+    const [user,setUser] = useState({
+        name:"",email:"",phone:"",work:"",password:"",cpassword:""
+    })
+    
+    let name,value
+    const handleChange =  (e) =>{
+        //console.log(e)
+        name = e.target.name
+        value = e.target.value
+        setUser({...user,[name]:value})
+        console.log(user)
+    }
+    const registerClick = async (e) =>{
+        // alert('Register Successfully')
+        e.preventDefault()
+         const [name,email,phone,work,password,cpassword] = user
     }
     return (
         <div>
@@ -19,6 +33,8 @@ const Signup = () => {
                                         <i class="zmdi zmdi-account material-icons-name"></i>
                                     </label>
                                     <input type='text' name='name' id='name' autoComplete='off'
+                                        value={user.name}
+                                        onChange={handleChange}
                                         placeholder='Your Name'></input>
                                 </div>
                                 <div className='form-group'>
@@ -26,6 +42,8 @@ const Signup = () => {
                                         <i class="zmdi zmdi-email material-icons-name"></i>
                                     </label>
                                     <input type='email' name='email' id='email' autoComplete='off'
+                                        value={user.email}
+                                        onChange={handleChange}
                                         placeholder='Your Email'></input>
                                 </div>
                                 <div className='form-group'>
@@ -33,6 +51,8 @@ const Signup = () => {
                                         <i class="zmdi zmdi-phone-in-talk material-icons-name"></i>
                                     </label>
                                     <input type='number' name='phone' id='phone' autoComplete='off'
+                                        value={user.phone}
+                                        onChange={handleChange}
                                         placeholder='Your Number'></input>
                                 </div>
                                 <div className='form-group'>
@@ -40,6 +60,8 @@ const Signup = () => {
                                         <i class="zmdi zmdi-slideshow material-icons-name"></i>
                                     </label>
                                     <input type='text' name='work' id='work' autoComplete='off'
+                                        value={user.work}
+                                        onChange={handleChange}
                                         placeholder='Your Profession'></input>
                                 </div>
                                 <div className='form-group'>
@@ -47,6 +69,8 @@ const Signup = () => {
                                         <i class="zmdi zmdi-lock material-icons-name"></i>
                                     </label>
                                     <input type='password' name='password' id='password' autoComplete='off'
+                                        value={user.password}
+                                        onChange={handleChange}
                                         placeholder='Your Password'></input>
                                 </div>
                                 <div className='form-group'>
@@ -54,6 +78,8 @@ const Signup = () => {
                                         <i class="zmdi zmdi-lock material-icons-name"></i>
                                     </label>
                                     <input type='password' name='cpassword' id='cpassword' autoComplete='off'
+                                        value={user.cpassword}
+                                        onChange={handleChange}
                                         placeholder='Your Confirm Password'></input>
                                 </div>
                                 <div className='form-group form-button'>
