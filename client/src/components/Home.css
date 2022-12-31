@@ -1,0 +1,11 @@
+#home_page{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: beige;
+    height: 590px;
+    padding-top: 180px;
+}
+#welcome_text{
+    color: blue;
+}

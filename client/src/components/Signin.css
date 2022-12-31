@@ -1,0 +1,58 @@
+#email{
+    border: none;
+    background-color: beige;
+}
+
+#password{
+    border: none;
+    background-color: beige;
+}
+.signin{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    
+}
+.form-group{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.signin-link{
+    padding-left: 20px;
+    text-decoration: none;
+    color: #000;
+    margin-right: 60px;
+}
+#signin-link{
+    padding-left: 20px;
+    padding-top: 20px;
+    text-decoration: none;
+    color: #000;
+    margin-right: 60px;
+}
+#form-submit{
+    justify-content: center;
+    text-align: center;
+    margin-right: 70px;
+}
+.signin-title{
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-right: 90px;
+}
+.signin-form{
+    background-color: beige;
+    height: 400px;
+    width: auto;
+    justify-content: center;
+    text-align: center;
+    padding-top: 90px;
+    box-shadow: 10px 5px 5px ;
+}
+#signin{
+    margin-right: 65px;
+}
