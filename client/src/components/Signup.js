@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom'
 import './Signup.css'
 
 const Signup = () => {
+    const registerClick = () =>{
+        alert('Register Successfully')
+    }
     return (
         <div>
             <section className='signup'>
@@ -54,7 +57,7 @@ const Signup = () => {
                                         placeholder='Your Confirm Password'></input>
                                 </div>
                                 <div className='form-group form-button'>
-                                    <button type='button' className='btn btn-primary'>Register</button>
+                                    <button type='button' className='btn btn-primary' onClick={registerClick}>Register</button>
                                 </div>
                                 <div>
                                     <NavLink to='/signin' className='signin-link'>Already Register,Please Sign In</NavLink>
