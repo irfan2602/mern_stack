@@ -31,9 +31,10 @@ const Signup = () => {
          })
          console.log(res)
          const data  =  await res.json()
-         if(data.status === 422 || !data){
-            console.log('failed')
+         if(res.status === '422' || !data){
             window.alert('Registration Failed')
+            console.log('failed')
+            
          }else{
             console.log('success')
             window.alert('Registration Successful')
@@ -47,7 +48,7 @@ const Signup = () => {
                     <div className='signup-content'>
                         <div className='signup-form'>
                             <h2 className='signup-title'>Sign Up</h2>
-                            <form className='register-form' id='register-form'>
+                            <form method='POST' className='register-form' id='register-form'>
                                 <div className='form-group'>
                                     <label htmlFor='name'>
                                         <i className="zmdi zmdi-account material-icons-name"></i>
