@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import './Signup.css'
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [user,setUser] = useState({
         name:"",email:"",phone:"",work:"",password:"",cpassword:""
     })
@@ -17,8 +18,27 @@ const Signup = () => {
     }
     const registerClick = async (e) =>{
         // alert('Register Successfully')
-        e.preventDefault()
-         const [name,email,phone,work,password,cpassword] = user
+        /* e.preventDefault() */
+         const {name,email,phone,work,password,cpassword} = user
+         const res= await fetch('/users',{
+            method:"POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                name,email,phone,work,password,cpassword
+            })
+         })
+         console.log(res)
+         const data  =  await res.json()
+         if(data.status === 422 || !data){
+            console.log('failed')
+            window.alert('Registration Failed')
+         }else{
+            console.log('success')
+            window.alert('Registration Successful')
+            navigate('/signin')
+         }
     }
     return (
         <div>
@@ -30,7 +50,7 @@ const Signup = () => {
                             <form className='register-form' id='register-form'>
                                 <div className='form-group'>
                                     <label htmlFor='name'>
-                                        <i class="zmdi zmdi-account material-icons-name"></i>
+                                        <i className="zmdi zmdi-account material-icons-name"></i>
                                     </label>
                                     <input type='text' name='name' id='name' autoComplete='off'
                                         value={user.name}
@@ -39,7 +59,7 @@ const Signup = () => {
                                 </div>
                                 <div className='form-group'>
                                     <label htmlFor='email'>
-                                        <i class="zmdi zmdi-email material-icons-name"></i>
+                                        <i className="zmdi zmdi-email material-icons-name"></i>
                                     </label>
                                     <input type='email' name='email' id='email' autoComplete='off'
                                         value={user.email}
@@ -48,7 +68,7 @@ const Signup = () => {
                                 </div>
                                 <div className='form-group'>
                                     <label htmlFor='phone'>
-                                        <i class="zmdi zmdi-phone-in-talk material-icons-name"></i>
+                                        <i className="zmdi zmdi-phone-in-talk material-icons-name"></i>
                                     </label>
                                     <input type='number' name='phone' id='phone' autoComplete='off'
                                         value={user.phone}
@@ -57,7 +77,7 @@ const Signup = () => {
                                 </div>
                                 <div className='form-group'>
                                     <label htmlFor='work'>
-                                        <i class="zmdi zmdi-slideshow material-icons-name"></i>
+                                        <i className="zmdi zmdi-slideshow material-icons-name"></i>
                                     </label>
                                     <input type='text' name='work' id='work' autoComplete='off'
                                         value={user.work}
@@ -66,7 +86,7 @@ const Signup = () => {
                                 </div>
                                 <div className='form-group'>
                                     <label htmlFor='password'>
-                                        <i class="zmdi zmdi-lock material-icons-name"></i>
+                                        <i className="zmdi zmdi-lock material-icons-name"></i>
                                     </label>
                                     <input type='password' name='password' id='password' autoComplete='off'
                                         value={user.password}
@@ -75,7 +95,7 @@ const Signup = () => {
                                 </div>
                                 <div className='form-group'>
                                     <label htmlFor='cpassword'>
-                                        <i class="zmdi zmdi-lock material-icons-name"></i>
+                                        <i className="zmdi zmdi-lock material-icons-name"></i>
                                     </label>
                                     <input type='password' name='cpassword' id='cpassword' autoComplete='off'
                                         value={user.cpassword}
